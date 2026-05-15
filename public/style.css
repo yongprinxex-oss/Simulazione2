@@ -118,6 +118,9 @@ img {
            e rimuovi il pallino di default della lista.
  */
 .header-nav ul {
+display: flex;
+align-items: end;
+list-style: none;
 }
 
 .header-nav li + li::before {
@@ -349,6 +352,10 @@ input[type="text"]:focus {
 /* TODO 2: Aggiungi uno stile per il pulsante di eliminazione dei record all'interno della tabella. 
        Il bottone dovrebbe essere rosso, con testo bianco, senza bordi, con un'ombra leggera */
 .btn-danger {
+    color: white;
+    background-color: rosso;
+    box-shadow: #fd3448;
+    border: none;
 }
 
 .btn.hidden {

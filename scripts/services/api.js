@@ -83,7 +83,21 @@ export async function getShowSuggestions(query) {
 export async function getShowById(showId) {
     // TODO 1: Usa l'id passato come argomento per recuperare i dettagli della serie, cast ed episodi.
     // Prima controlla che l'id sia un numero intero positivo, altrimenti solleva un errore.
+
+    const id = Number(showId);
+    if (!Number.isInteger(id) || id <= 0){
+        throw new error("ID non valido: metti un ID valido");   
+    }
+
     // Poi esegui tre fetch con la funzione requestJson:
+
+    const [serie, cast, episodes] = 
+    await Promise.all([
+        requestJson(`/serie/${id}`),
+                requestJson(`/serie/${id}/cast`),
+                requestJson(`/serie/${id}/episodes`)
+
+    ]);
     // - una per i dettagli della serie (endpoint /shows/{id}) --> show
     // - una per il cast (endpoint /shows/{id}/cast) --> cast
     // - una per gli episodi (endpoint /shows/{id}/episodes) --> episodes
