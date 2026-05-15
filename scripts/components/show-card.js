@@ -50,6 +50,9 @@ export function createShowCard(show, titleOverride = "", options = {}) {
     // Per tutti usare sanitizeHTML per inserire i dati dinamici in modo sicuro.
     card.innerHTML = `
         <div class="series-card-header">
+        <div classe "series-title-block">
+        <h2>${sanitizeHTML(title)} </h2>
+        <p class="series-status">${sanitizeHTML(status)}</p>
         </div>
 
         <div class="series-current show-current">
@@ -57,8 +60,26 @@ export function createShowCard(show, titleOverride = "", options = {}) {
                 ${poster ? `<img class="show-poster" src="${sanitizeHTML(poster)}" alt="Poster ${sanitizeHTML(show.name)}">` : "<div class='show-poster-placeholder'>No image</div>"}
             </div>
             <div class="series-meta show-meta">
+            <div class="series-meta">
+            <div class="temp-main">
+                ⭐ ${sanitizeHTML(rating)}
+            </div>
+            <div class="temp-desc">
+                ${sanitizeHTML(genres)}
+            </div>
+            <p class="show-summary">
+                ${getSafeSummary(show.summary)}
+            </p>
             </div>
         </div>
+
+        <div class="series-current show-current">
+        <div class="show-poster-wrap">
+            ${poster ? `<img class="show-poster" src="${sanitizeHTML(poster)}" alt="Poster ${sanitizeHTML(title)}">` : ''}
+        </div>
+        <div class="series-meta show-meta">
+            </div>
+    </div>
 
         <div class="series-details-grid">
             <div class="detail-item">

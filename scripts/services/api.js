@@ -83,7 +83,7 @@ export async function getShowSuggestions(query) {
 export async function getShowById(showId) {
     // TODO 1: Usa l'id passato come argomento per recuperare i dettagli della serie, cast ed episodi.
     // Prima controlla che l'id sia un numero intero positivo, altrimenti solleva un errore.
-
+    const url = `${API_BASE}/serie/cast/episodes?q=}`;
     const id = Number(showId);
     if (!Number.isInteger(id) || id <= 0){
         throw new error("ID non valido: metti un ID valido");   
